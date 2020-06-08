@@ -28,3 +28,9 @@ npm start
 ```
 npm run build
 ```
+
+### Serve files through Caddy
+Note: checked-in version is for Debian, you can find another 2.x version [here](https://github.com/caddyserver/caddy/releases)
+```
+./caddy run
+```
