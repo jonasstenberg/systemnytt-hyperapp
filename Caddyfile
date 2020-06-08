@@ -1,12 +1,5 @@
-:1235
+:8080
 
-log /api stdout "{common} {referer}"
-
-route /api* {
-  uri strip_prefix /api
-  reverse_proxy https://api-extern.systembolaget.se {
-    header_up host "api-extern.systembolaget.se"
-  }
-}
+log / stdout "{common} {referer}"
 
 reverse_proxy localhost:1234
