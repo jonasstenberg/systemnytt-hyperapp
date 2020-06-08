@@ -1,0 +1,77 @@
+.beverages {
+  max-width: 799px;
+  margin: 2rem auto;
+  text-align: left;
+  background-color: #fff;
+  border: 1px solid #f1f1f1;
+  box-shadow: 3px 3px 10px 5px #e7e7e7;
+}
+
+.beverages__info {
+  padding: 1rem;
+}
+
+.product-group {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.product-group__info {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+.product-group__info-title {
+  margin: 0;
+  font-size: 2rem;
+}
+
+.product-group__info-star {
+  width: 2rem;
+  height: 2rem;
+  margin-left: auto;
+}
+
+.beverages__empty {
+  padding: 1rem;
+}
+
+.beverages__total-number {
+  font-weight: bold;
+}
+
+.product-group__info-star--label {
+  cursor: pointer;
+}
+
+.product-group__releases {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.product-group__info-star--checkbox {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  opacity: 0;
+}
+
+.product-group__info-star--checkbox + label.product-group__info-star--label {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  background-repeat: no-repeat;
+  background-position: auto 100%;
+}
+
+@media (min-width: 799px) {
+  .product-group {
+    padding: 2rem 2rem 1rem;
+  }
+}

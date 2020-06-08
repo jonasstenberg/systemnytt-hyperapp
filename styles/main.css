@@ -1,0 +1,44 @@
+@import "./normalize.css";
+
+:root {
+  /* Colors - main */
+  --color-orange: #ed6a5a;
+  --color-yellow: #f4f1bb;
+  --color-turquoise: #9bc1bc;
+  --color-blue: #5ca4a9;
+  --color-off-white: #e6ebe0;
+  --color-gray: #c1c1c1;
+  --color-mid-gray: #a0a0a0;
+  --color-dark-gray: #333;
+  --color-white: #fff;
+}
+
+@import "./defaults.css";
+@import "./navigation.css";
+@import "./beverages.css";
+@import "./pagination.css";
+@import "./search.css";
+@import "./beverage-list.css";
+
+.title {
+  margin-top: 1rem;
+  margin-bottom: 0.25rem;
+  text-align: center;
+}
+
+.title-description {
+  margin-bottom: 0.5rem;
+  text-align: center;
+}
+
+footer {
+  flex: none;
+  max-width: 600px;
+  padding: 0 1rem 1rem;
+  margin: 0 auto;
+  text-align: center;
+}
+
+footer a {
+  color: #333;
+}

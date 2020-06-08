@@ -1,0 +1,69 @@
+*,
+::after,
+::before {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 16px;
+}
+
+html,
+body,
+main {
+  height: 100%;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  overflow-x: hidden;
+  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-size: 1rem;
+  color: var(--color-dark-gray);
+  background-color: #eee;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+main {
+  flex: 1;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+}
+
+h1 {
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+h2 {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+p {
+  margin: 0;
+}
+
+.caption {
+  font-size: 0.875rem;
+  font-weight: 300;
+}
+
+.flex {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+}
