@@ -124,6 +124,14 @@ export default {
   },
 
   setStarredProductGroup: (starredProductGroup) => {
+    // Oops, saved null as a string to localStorage by mistake
+    if (starredProductGroup === 'null') {
+      window.localStorage.removeItem('starredProductGroup')
+      return {
+        starredProductGroup: null
+      }
+    }
+
     window.localStorage.setItem('starredProductGroup', starredProductGroup)
 
     return {
