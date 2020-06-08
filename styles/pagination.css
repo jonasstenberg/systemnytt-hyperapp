@@ -1,6 +1,7 @@
 .pagination {
   display: flex;
   margin-left: auto;
+  touch-action: manipulation;
 }
 
 .pagination__button {
