@@ -20,7 +20,9 @@ export default {
     actions.initProductGroup()
     actions.initStarredBeverages()
 
-    actions.setStarredProductGroup(starredProductGroup)
+    if (starredProductGroup) {
+      actions.setStarredProductGroup(starredProductGroup)
+    }
     actions.setLoading(false)
   },
 
