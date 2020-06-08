@@ -21,9 +21,15 @@
   display: flex;
   align-items: center;
   width: 100%;
-  height: 3.25rem;
-  padding: 0 0.5rem;
+  min-height: 3.25rem;
+  padding: 0.25rem 0.5rem;
   cursor: pointer;
+}
+
+.beverage-list__item-price {
+  padding-right: 1rem;
+  margin-left: auto;
+  white-space: nowrap;
 }
 
 .beverage-list__item-title:hover {
@@ -70,4 +76,10 @@
   height: 2rem;
   background-repeat: no-repeat;
   background-position: auto 100%;
+}
+
+@media (min-width: 799px) {
+  .beverage-list__item-title {
+    padding: 0 0.5rem;
+  }
 }

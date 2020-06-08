@@ -102,7 +102,8 @@ export default (state, actions) => {
             class: 'beverage-list__item-icon',
             src: iconUrl(beverage.packaging, state.starredBeverages.includes(beverage.nr))
           }),
-          title(beverage)
+          title(beverage),
+          h('span', { class: 'beverage-list__item-price' }, `${beverage.price.amount.toFixed(2)} ${beverage.price.currency}`)
         ]),
         beverage.expanded ? h('div', { class: 'beverage-list__item-expanded' }, [
           Attributes(beverage),
