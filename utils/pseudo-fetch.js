@@ -41,7 +41,6 @@ export default (url, options = {}) => new Promise((resolve, reject) => {
 
   request.onload = () => {
     request.getAllResponseHeaders().replace(/^(.*?):[^\S\n]*([\s\S]*?)$/gm, (m, key, value) => {
-      // eslint-disable-next-line no-param-reassign
       keys.push(key = key.toLowerCase())
       all.push([key, value])
       headers[key] = headers[key] ? `${headers[key]},${value}` : value

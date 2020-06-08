@@ -4,7 +4,6 @@ import getQueryParam from '../queryparam'
 
 const groupBy = (key) => (array) => array.reduce((objectsByKeyValue, obj) => {
   const value = obj[key]
-  // eslint-disable-next-line no-param-reassign
   objectsByKeyValue[value] = (objectsByKeyValue[value] || []).concat(obj)
   return objectsByKeyValue
 }, {})
@@ -64,7 +63,6 @@ export default async () => {
   const sortedGroupedBeverages = Object.keys(groupedBeverages)
     .sort()
     .reduce((accumulator, currentValue) => {
-      // eslint-disable-next-line no-param-reassign
       accumulator[currentValue] = groupedBeverages[currentValue]
       return accumulator
     }, {})
