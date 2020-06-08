@@ -132,7 +132,11 @@ export default {
       }
     }
 
-    window.localStorage.setItem('starredProductGroup', starredProductGroup)
+    if (starredProductGroup) {
+      window.localStorage.setItem('starredProductGroup', starredProductGroup)
+    } else {
+      window.localStorage.removeItem('starredProductGroup')
+    }
 
     return {
       starredProductGroup
@@ -140,7 +144,11 @@ export default {
   },
 
   setStarredBeverage: (starredBeverages) => {
-    window.localStorage.setItem('starredBeverages', JSON.stringify(starredBeverages))
+    if (starredBeverages && starredBeverages.length) {
+      window.localStorage.setItem('starredBeverages', JSON.stringify(starredBeverages))
+    } else {
+      window.localStorage.removeItem('starredBeverages')
+    }
 
     return {
       starredBeverages
