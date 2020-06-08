@@ -7,11 +7,12 @@ export default (state, actions) => h('nav', { class: 'navigation' },
     state.menuItems.map(menuItem =>
       h('li', { class: 'navigation-list__item' },
         h('button', {
-          class: 'navigation-list__item--link',
+          class: `navigation-list__item-button${state.productGroup === menuItem.key ? ' navigation-list__item-button--active' : ''}`,
           onclick: () => {
             const releaseDate = getQueryParam('releaseDate')
             window.history.pushState(null, '', `?productGroup=${menuItem.key}&releaseDate=${releaseDate}`)
             actions.setProductGroup(menuItem.key)
+            console.log(state.productGroup, getQueryParam('productGroup'))
           }
         }, `${menuItem.key} (${menuItem.len})`)
       )
