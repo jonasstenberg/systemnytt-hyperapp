@@ -8,6 +8,9 @@
 .beverage-list__item {
   display: flex;
   flex-direction: column;
+}
+
+.beverage-list__item:not(:last-child) {
   border-bottom: 1px solid #f1f1f1;
 }
 
