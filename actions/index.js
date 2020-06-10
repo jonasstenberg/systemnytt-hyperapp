@@ -130,10 +130,6 @@ export default {
       productGroup = state.menuItems[0].key
     }
 
-    if (!state.route && productGroup) {
-      actions.pushState(productGroup)
-    }
-
     return {
       productGroup,
       starredProductGroup
