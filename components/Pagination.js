@@ -23,7 +23,7 @@ export default (state, actions) => {
     const releaseDate = findDate(state.selectedReleaseDate, Object.keys(state.beverages), direction)
 
     actions.setSelectedReleaseDate(releaseDate)
-    actions.setQueryParams()
+    actions.pushState(state.route)
 
     const local = window.localStorage.getItem(getQueryParam('releaseDate'))
     if (local) {

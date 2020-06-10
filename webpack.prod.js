@@ -13,17 +13,17 @@ module.exports = {
   mode: 'production',
   devtool: 'source-map',
   output: {
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'dist'),
+    publicPath: '/'
   },
   entry: {
-    app: [
-      path.join(__dirname, './index.js')
-    ]
+    app: './index.js'
   },
   devServer: {
-    contentBase: path.join(__dirname, 'dist'),
-    overlay: true,
-    port: 1234
+    contentBase: './dist',
+    compress: true,
+    port: 1234,
+    historyApiFallback: true
   },
   module: {
     rules: [

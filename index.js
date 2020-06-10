@@ -6,9 +6,15 @@ import App from './components/App'
 
 import './styles/main.css'
 
-app(
+const wiredActions = app(
   state,
   actions,
   App,
   document.getElementById('app')
 )
+
+wiredActions.init()
+
+window.addEventListener('popstate', () => {
+  wiredActions.parseLocation()
+})

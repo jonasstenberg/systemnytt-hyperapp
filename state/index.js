@@ -1,4 +1,5 @@
 export default {
   menuItems: [],
-  starredBeverages: []
+  starredBeverages: [],
+  route: ''
 }

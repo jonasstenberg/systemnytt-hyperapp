@@ -3,13 +3,39 @@ import getQueryParam from '../utils/queryparam'
 import { groupBeveragesBy } from '../utils/beverages'
 
 export default {
+  init: () => (_, actions) => {
+    actions.parseLocation()
+  },
+
+  set: param => ({ ...param }),
+
+  pushState: pathname => (state, actions) => {
+    window.history.pushState(null, '', `${pathname}?releaseDate=${state.selectedReleaseDate}`)
+    actions.parseLocation()
+  },
+
+  parseLocation: () => (_, actions) => {
+    const [
+      route
+    ] = window.location.pathname
+      .split('/')
+      .filter(s => s.length)
+      .map(s => decodeURIComponent(s))
+
+    if (route) {
+      actions.set({
+        route
+      })
+    }
+  },
+
   setLoading: (loading) => ({ loading }),
 
   save: () => (state) => {
     window.localStorage.setItem(state.selectedReleaseDate, JSON.stringify(state.beverages))
   },
 
-  restore: (beverages) => (state, actions) => {
+  restore: (beverages) => (_, actions) => {
     const starredProductGroup = window.localStorage.getItem('starredProductGroup')
 
     actions.setLoading(true)
@@ -26,15 +52,11 @@ export default {
     actions.setLoading(false)
   },
 
-  setQueryParams: () => (state) => {
-    window.history.pushState(null, '', `/?productGroup=${state.productGroup}&releaseDate=${state.selectedReleaseDate}`)
-  },
-
   setSearchPhrase: (searchPhrase) => ({ searchPhrase }),
 
   setError: (error) => ({ error }),
 
-  fetchBeverages: () => async (state, actions) => {
+  fetchBeverages: () => async (_, actions) => {
     actions.setLoading(true)
     try {
       const result = await bolaget()
@@ -87,23 +109,22 @@ export default {
 
   setMenuItems: (menuItems) => ({ menuItems }),
 
-  initProductGroup: () => (state) => {
-    const productGroupQuery = getQueryParam('productGroup')
+  initProductGroup: () => (state, actions) => {
     let productGroup
 
     const starredProductGroup = window.localStorage.getItem('starredProductGroup')
     const groupedBeverages = groupBeveragesBy(state.beverages[state.selectedReleaseDate], 'product_group')
 
-    if (productGroupQuery) {
-      productGroup = productGroupQuery
+    if (state.route) {
+      productGroup = state.route
     } else if (starredProductGroup && groupedBeverages[starredProductGroup]) {
       productGroup = starredProductGroup
     } else if (state.menuItems.length) {
       productGroup = state.menuItems[0].key
     }
 
-    if (!productGroupQuery && productGroup) {
-      window.history.pushState(null, '', `/?productGroup=${productGroup}&releaseDate=${state.selectedReleaseDate}`)
+    if (!state.route && productGroup) {
+      actions.pushState(productGroup)
     }
 
     return {

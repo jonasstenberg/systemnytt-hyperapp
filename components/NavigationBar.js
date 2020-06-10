@@ -1,7 +1,5 @@
 import { h } from 'hyperapp'
 
-import getQueryParam from '../utils/queryparam'
-
 export default (state, actions) => h('nav', { class: 'navigation' },
   h('ul', { class: 'navigation-list' }, [
     state.menuItems.map(menuItem =>
@@ -9,8 +7,7 @@ export default (state, actions) => h('nav', { class: 'navigation' },
         h('button', {
           class: `navigation-list__item-button${state.productGroup === menuItem.key ? ' navigation-list__item-button--active' : ''}`,
           onclick: () => {
-            const releaseDate = getQueryParam('releaseDate')
-            window.history.pushState(null, '', `?productGroup=${menuItem.key}&releaseDate=${releaseDate}`)
+            actions.pushState(menuItem.key)
             actions.setProductGroup(menuItem.key)
           }
         }, `${menuItem.key} (${menuItem.len})`)

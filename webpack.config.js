@@ -9,7 +9,8 @@ module.exports = {
   mode: 'development',
   devtool: 'eval-source-map',
   output: {
-    path: path.join(__dirname, 'dist')
+    path: path.join(__dirname, 'dist'),
+    publicPath: '/'
   },
   entry: {
     app: './index.js'
@@ -19,7 +20,8 @@ module.exports = {
     overlay: true,
     compress: true,
     hot: true,
-    port: 1234
+    port: 1234,
+    historyApiFallback: true
   },
   module: {
     rules: [

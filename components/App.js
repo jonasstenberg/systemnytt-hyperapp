@@ -14,7 +14,7 @@ export default (state, actions) => h('div', {
       await actions.fetchBeverages()
     }
 
-    actions.setQueryParams()
+    actions.pushState(state.route)
   }
 }, [
   h('h1', { class: 'title' }, 'systemnytt.se'),
