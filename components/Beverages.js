@@ -6,6 +6,9 @@ import Pagination from './Pagination'
 import Search from './Search'
 import BeverageList from './BeverageList'
 
+import Star from '../static/images/star.svg'
+import StarFilled from '../static/images/star_filled.svg'
+
 const nextRelease = (beverages, selectedReleaseDate) => {
   if (!selectedReleaseDate) {
     return ''
@@ -48,7 +51,7 @@ const beverages = (state, actions) => h('div', { class: 'beverages' }, [
           class: 'product-group__info-star-label'
         },
         h('img', {
-          src: `/images/star${isChecked(state.starredProductGroup, state.productGroup) ? '_filled' : ''}.svg`
+          src: isChecked(state.starredProductGroup, state.productGroup) ? StarFilled : Star
         })
         )
       ])

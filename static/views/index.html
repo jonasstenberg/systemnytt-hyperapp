@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <meta name="keywords" content="systemnytt, systembolaget, öl, vin, sprit, nyheter"/>
     <meta name="description" content="Systemnytt hjälper dig hitta småpartier och lokalproducerat som släpps på utvalda Systembolag."/>
-    <link rel="stylesheet" type="text/css" href="styles/main.css">
     <link rel="shortcut icon" href="./static/images/favicon.ico">
     <!-- Google Analytics -->
     <script>
@@ -18,8 +17,15 @@
       <script async src='https://www.google-analytics.com/analytics.js'></script>
       <!-- End Google Analytics -->
   </head>
-  <body id="app">
-    <script src="index.js"></script>
+  <body>
+    <main id="app">
+      <noscript>
+        <div class="no-js">
+          <h1>Where did JavaScript go?</h1>
+          <p>Couldn't load app because JavaScript is disabled</p>
+        </div>
+      </noscript>
+    </main>
     <footer>
       <p>
         Systemnytt listar småpartier som släpps på utvalda Systembolag.

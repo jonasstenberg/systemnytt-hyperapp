@@ -2,6 +2,13 @@ import { h } from 'hyperapp'
 
 import { filteredBeverages } from '../utils/beverages'
 
+import Can from '../static/images/can.svg'
+import CanFilled from '../static/images/can_filled.svg'
+import Bottle from '../static/images/bottle.svg'
+import BottleFilled from '../static/images/bottle_filled.svg'
+import Star from '../static/images/star.svg'
+import StarFilled from '../static/images/star_filled.svg'
+
 const title = (beverage) => {
   let title = ''
   title += beverage.name ? `${beverage.name} ` : ''
@@ -15,9 +22,9 @@ const title = (beverage) => {
 const iconUrl = (packaging, filled) => {
   switch (packaging) {
     case 'Burk':
-      return filled ? '/images/can_filled.svg' : '/images/can.svg'
+      return filled ? CanFilled : Can
     default:
-      return filled ? '/images/bottle_filled.svg' : '/images/bottle.svg'
+      return filled ? BottleFilled : Bottle
   }
 }
 
@@ -134,7 +141,7 @@ export default (state, actions) => {
               for: 'beverage-star',
               class: 'beverage-list__item-star-label'
             }, h('img', {
-              src: `/images/star${beverageIsChecked(state.starredBeverages, beverage) ? '_filled' : ''}.svg`
+              src: beverageIsChecked(state.starredBeverages, beverage) ? StarFilled : Star
             }))
           ])
         ]) : null

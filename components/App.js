@@ -5,7 +5,7 @@ import Beverages from './Beverages'
 
 import getQueryParam from '../utils/queryparam'
 
-export default (state, actions) => h('main', {
+export default (state, actions) => h('div', {
   oncreate: async () => {
     const local = window.localStorage.getItem(getQueryParam('releaseDate'))
     if (local) {

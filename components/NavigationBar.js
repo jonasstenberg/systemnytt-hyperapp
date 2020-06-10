@@ -12,7 +12,6 @@ export default (state, actions) => h('nav', { class: 'navigation' },
             const releaseDate = getQueryParam('releaseDate')
             window.history.pushState(null, '', `?productGroup=${menuItem.key}&releaseDate=${releaseDate}`)
             actions.setProductGroup(menuItem.key)
-            console.log(state.productGroup, getQueryParam('productGroup'))
           }
         }, `${menuItem.key} (${menuItem.len})`)
       )
