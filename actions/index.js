@@ -10,7 +10,14 @@ export default {
   set: param => ({ ...param }),
 
   pushState: pathname => (state, actions) => {
-    window.history.pushState(null, '', `${pathname}?releaseDate=${state.selectedReleaseDate}`)
+    if (document.title.indexOf(pathname) === -1) {
+      document.title = `${pathname} - systemnytt.se`
+    }
+    if (pathname === state.route) {
+      window.history.replaceState(null, '', `${pathname}?releaseDate=${state.selectedReleaseDate}`)
+    } else {
+      window.history.pushState(null, '', `${pathname}?releaseDate=${state.selectedReleaseDate}`)
+    }
     actions.parseLocation()
   },
 
