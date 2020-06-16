@@ -7,7 +7,9 @@ export default {
     actions.parseLocation()
   },
 
-  set: param => ({ ...param }),
+  set: param => {
+    return Object.assign({}, param)
+  },
 
   pushState: pathname => (state, actions) => {
     if (document.title.indexOf(pathname) === -1) {

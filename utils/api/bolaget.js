@@ -38,10 +38,9 @@ export default async () => {
     beverages.push(...data)
 
     if (data.length >= 100) {
-      const p = {
-        ...params,
+      const p = Object.assign({}, params, {
         offset: params.offset ? params.offset + data.length : data.length
-      }
+      })
       return getBeverages(p, beverages)
     }
 
