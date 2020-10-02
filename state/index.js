@@ -1,5 +1,7 @@
 export default {
   menuItems: [],
   starredBeverages: [],
-  route: ''
+  route: '',
+  triedFuture: false,
+  triedPast: false
 }

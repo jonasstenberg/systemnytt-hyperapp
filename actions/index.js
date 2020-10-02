@@ -15,6 +15,8 @@ export default {
     if (document.title.indexOf(pathname) === -1) {
       document.title = `${pathname} - systemnytt.se`
     }
+
+    console.log(pathname, state.route)
     if (pathname === state.route) {
       window.history.replaceState(null, '', `${pathname}?releaseDate=${state.selectedReleaseDate}`)
     } else {
@@ -23,25 +25,16 @@ export default {
     actions.parseLocation()
   },
 
-  parseLocation: () => (_, actions) => {
-    const [
-      route
-    ] = window.location.pathname
-      .split('/')
-      .filter(s => s.length)
-      .map(s => decodeURIComponent(s))
-
-    if (route) {
-      actions.set({
-        route
-      })
-    }
-  },
-
-  setLoading: (loading) => ({ loading }),
-
   save: () => (state) => {
-    window.localStorage.setItem(state.selectedReleaseDate, JSON.stringify(state.beverages))
+    const currentLocalStorage = window.localStorage.getItem('beverages')
+    if (!currentLocalStorage) {
+      window.localStorage.setItem('beverages', JSON.stringify(state.beverages))
+    } else {
+      console.log(state.beverages, JSON.parse(currentLocalStorage))
+      const beverages = Object.assign({}, state.beverages, JSON.parse(currentLocalStorage))
+      console.log(beverages)
+      window.localStorage.setItem('beverages', JSON.stringify(beverages))
+    }
   },
 
   restore: (beverages) => (_, actions) => {
@@ -60,6 +53,23 @@ export default {
     }
     actions.setLoading(false)
   },
+
+  parseLocation: () => (_, actions) => {
+    const [
+      route
+    ] = window.location.pathname
+      .split('/')
+      .filter(s => s.length)
+      .map(s => decodeURIComponent(s))
+
+    if (route) {
+      actions.set({
+        route
+      })
+    }
+  },
+
+  setLoading: (loading) => ({ loading }),
 
   setSearchPhrase: (searchPhrase) => ({ searchPhrase }),
 

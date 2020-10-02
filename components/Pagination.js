@@ -1,7 +1,5 @@
 import { h } from 'hyperapp'
 
-import getQueryParam from '../utils/queryparam'
-
 const findDate = (key, keys, direction) => {
   if (keys.indexOf(key) > -1) {
     const num = direction === 'back' ? -1 : 1
@@ -25,9 +23,17 @@ export default (state, actions) => {
     actions.setSelectedReleaseDate(releaseDate)
     actions.pushState(state.route)
 
-    const local = window.localStorage.getItem(getQueryParam('releaseDate'))
-    if (local) {
-      actions.restore(JSON.parse(local))
+    const local = window.localStorage.getItem('beverages')
+    const beverages = JSON.parse(local)
+
+    const keys = Object.keys(beverages)
+    const indexOf = keys.indexOf(releaseDate)
+
+    const existsInBeverages = beverages[releaseDate]
+    const futureOrPast = indexOf && (indexOf >= keys.length - 3 || indexOf < 3)
+
+    if (beverages && existsInBeverages && !futureOrPast) {
+      actions.restore(beverages)
     } else {
       await actions.fetchBeverages()
     }

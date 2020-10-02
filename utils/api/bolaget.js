@@ -11,7 +11,7 @@ const groupBy = (key) => (array) => array.reduce((objectsByKeyValue, obj) => {
 const getStartDate = (releaseDate) => {
   const supposedlyDate = releaseDate ? new Date(releaseDate) : Date.now()
   const date = new Date(supposedlyDate)
-  date.setDate(date.getDate() - 30)
+  date.setDate(date.getDate() - 60)
 
   return formatDate(date)
 }
@@ -19,7 +19,7 @@ const getStartDate = (releaseDate) => {
 const getEndDate = (releaseDate) => {
   const supposedlyDate = releaseDate ? new Date(releaseDate) : Date.now()
   const date = new Date(supposedlyDate)
-  date.setDate(date.getDate() + 30)
+  date.setDate(date.getDate() + 60)
 
   return formatDate(date)
 }
